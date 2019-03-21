@@ -30,7 +30,27 @@ final class Navigation {
     }
     
     private func start() {
-        let mainVC = ViewController()
+        let mainVC = ContactsVC()
+        mainVC.viewModel.cellSelectedCompletion = {
+            self.proceedToContactDetailsScreen()
+        }
         navigationController = UINavigationController(rootViewController: mainVC)
     }
+    
+    private func proceedToContactDetailsScreen() {
+        let contactDetailsVC = ContactDetailsVC()
+        contactDetailsVC.editContactDetails = {
+            self.proceedToEditContactDetailsScreen()
+        }
+        navigationController.pushViewController(contactDetailsVC, animated: true)
+    }
+    
+    private func proceedToEditContactDetailsScreen() {
+        let editContactDetailsVC = EditContactVC()
+        editContactDetailsVC.postSaveCompletion = {
+            self.navigationController.popViewController(animated: true)
+        }
+        navigationController.pushViewController(editContactDetailsVC, animated: true)
+    }
+
 }

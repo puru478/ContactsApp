@@ -53,4 +53,9 @@ extension UIColor {
     static var whiteGrey: UIColor {
         return colorFromHexString("F2F3F6")
     }
+    
+    static var teal: UIColor {
+        return colorFromHexString("50E3C2")
+    }
+
 }
