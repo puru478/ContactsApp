@@ -37,6 +37,7 @@ import UIKit
     var labelText: UILabel?
     var circleImageView: UIImageView?
     var cameraImageView: UIImageView?
+    var onClickOfCameraIconCompletion: completionHandler = nil
     
     override func setup() {
         let padding = bounds.size.width * 0.1
@@ -64,5 +65,6 @@ import UIKit
     
     @objc func cameraActiong() {
         print(" camera clicked!! ")
+        onClickOfCameraIconCompletion?()
     }
 }
